@@ -40,7 +40,7 @@
   --font-ui:        'Space Grotesk', system-ui, sans-serif;
 
   /* Layout */
-  --container:      1240px;
+  --container:      1440px;
   --section-v:      7rem;   /* vertical section padding (top+bottom) */
   --radius:         16px;
   --radius-sm:      10px;
@@ -822,17 +822,41 @@ blockquote { font-style: italic; }
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+
   font-family: var(--font-ui);
   font-size: 0.78rem;
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+
   color: var(--gold-dim);
+  text-decoration: none;
+
   transition: gap 0.25s, color 0.25s;
 }
-.card-link svg { width: 14px; height: 14px; transition: transform 0.25s; }
-.card-link:hover { gap: 0.85rem; color: var(--gold); }
-.card-link:hover svg { transform: translateX(3px); }
+
+.card-link svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.25s;
+}
+
+.card-link:hover {
+  gap: 0.85rem;
+  color: var(--gold);
+}
+
+.card-link:hover svg {
+  transform: translateX(3px);
+}
+.card-link {
+  position: relative;
+  z-index: 100;
+  pointer-events: auto;
+}
+.card-glow {
+  pointer-events: none;
+}
 
 /* ── CAREER TIMELINE ──────────────────────────────────────────── */
 /* Horizontal 4-step path */
@@ -1392,6 +1416,26 @@ blockquote { font-style: italic; }
   grid-template-columns: 1fr 1fr;
   gap: 1.25rem;
 }
+
+/* Dropdown field */
+select{
+  background: #11131c;
+  color: #ffffff;
+
+  border: 1px solid rgba(201,168,76,0.35);
+
+  appearance: none;
+  border-radius: 16px;
+}
+
+/* Dropdown options */
+select option{
+  background: #0b0d1469;
+  color: #ffffff;
+
+  border-radius: 16px;
+}
+
 .form-group {
   display: flex;
   flex-direction: column;
@@ -1559,7 +1603,7 @@ blockquote { font-style: italic; }
 .footer-col ul li a { color: var(--text-muted); transition: color 0.2s; }
 .footer-col ul li a:hover { color: var(--gold); }
 .footer-bottom {
-  padding: 1.75rem 0;
+  padding: 1.75rem 2.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1636,4 +1680,34 @@ blockquote { font-style: italic; }
   .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
 
   .cta-btns { flex-direction: column; align-items: center; }
+}
+
+/* ── LARGE DESKTOP SCREENS ───────────────────── */
+@media (min-width: 2000px) {
+
+  :root {
+    --container: 1600px;
+  }
+
+  body {
+    zoom: 1.05;
+  }
+
+  .hero-content,
+  .about-grid,
+  .contact-grid {
+    gap: 7rem;
+  }
+
+  .courses-grid {
+    gap: 40px;
+  }
+
+  .section {
+    padding: 8rem 0;
+  }
+
+  .hero-heading {
+    max-width: 750px;
+  }
 }
